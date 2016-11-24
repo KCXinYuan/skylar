@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Information extends Component {
 	constructor(props) {
@@ -18,7 +19,11 @@ class Information extends Component {
 		}
 
 		return (
-			<div style={{ height: '100vh', width: '20vw', float: 'right' }}>{this.props.info}</div>
+			<ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={1000} transitionLeaveTimeout={1000}>
+				<div key={this.props.info.place_id} style={{ height: '100vh', width: '20vw', position: 'absolute', right: '0px', backgroundColor: 'black' }}>
+					{this.props.info.name}
+				</div>
+			</ReactCSSTransitionGroup>
 		);
 	}
 }

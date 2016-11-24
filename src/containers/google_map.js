@@ -1,29 +1,43 @@
 // Google Map container. This is the component for the Google Map.
-// It uses react-google-maps to render the actual map.
+// It renders the map using google api.
 // This is a container since it connects with redux.
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchInformation } from '../actions/index';
-import { GoogleMapLoader, GoogleMap } from 'react-google-maps';
 
 class Map extends Component {
 	constructor(props) {
 		super(props);
 	}
 
+	shouldComponentUpdate() {
+		return false;
+	}
+
+	componentDidMount() {
+		const map = new google.maps.Map(this.refs.map, {
+			center: { lat: this.props.lat, lng: this.props.lng },
+			zoom: 18
+		});
+
+		map.addListener('click', ((event) => {
+			if (event.placeId) {
+				const service = new google.maps.places.PlacesService(map);
+
+				service.getDetails({ placeId: event.placeId }, (place, status) => {
+					if (status === google.maps.places.PlacesServiceStatus.OK) {
+						this.props.fetchInformation(place);
+					}
+				});
+			}
+		}).bind(this));
+	}
+
 	render() {
 		return (
-			<GoogleMapLoader
-				containerElement={ <div style={{ height: '100vh', width: '80vw', position: 'absolute' }} /> }
-				googleMapElement={
-					<GoogleMap
-							onClick={(event) => { if (event.placeId) {this.props.fetchInformation(event.placeId)} }}
-							defaultZoom={18}
-							defaultCenter={{lat: this.props.lat, lng: this.props.lon}}>
-					</GoogleMap>
-				} />
+			<div id="map" ref="map" />
 		);
 	}
 }

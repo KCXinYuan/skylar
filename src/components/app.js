@@ -10,7 +10,7 @@ export default class App extends Component {
 	render() {
 		return (
 			<div>
-				<Map lat={47.656} lon={-122.3095} />
+				<Map lat={47.656} lng={-122.3095} />
 				<Information />
 			</div>
 		);

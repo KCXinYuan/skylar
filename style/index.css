@@ -1,0 +1,23 @@
+#map {
+	height: 100vh;
+	width: 80vw;
+	position: absolute;
+}
+
+.fade-enter {
+	top: -1000px;
+}
+
+.fade-enter-active {
+	top: 0px;
+	transition: 1s ease-in all;
+}
+
+.fade-leave {
+	top: 0px;
+}
+
+.fade-leave-active {
+	top: -2000px;
+	transition: 1s ease-out all;
+}
