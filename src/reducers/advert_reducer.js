@@ -1,14 +1,16 @@
-// This is the information reducer.
+// This is the Advert reducer.
 // it takes the information that was fetched
-// by the fetchInformation action and returns
+// by the fetchAdvert action and returns
 // that information as state that we can use
 // to render onto the page
 
-import { FETCH_INFORMATION } from '../actions/index';
+import { FETCH_ADVERT, RESET_ADVERT } from '../actions';
 
 export default function(state = {}, action) {
 	switch(action.type) {
-	case FETCH_INFORMATION:
+	case FETCH_ADVERT:
+		return action.payload;
+	case RESET_ADVERT:
 		return action.payload;
 	}
 	return state;

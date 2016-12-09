@@ -4,10 +4,14 @@
 // when we add more, it will be added to the combineReducers
 
 import { combineReducers } from 'redux';
-import InformationReducer from './information_reducer';
+import AuthReducer from './reducer_auth';
+import EstablishmentReducer from './establishment_reducer';
+import AdvertReducer from './advert_reducer';
 
 const rootReducer = combineReducers({
-  info: InformationReducer
+	authenticated: AuthReducer,
+	establishmentInfo: EstablishmentReducer,
+	advertInfo: AdvertReducer
 });
 
 export default rootReducer;

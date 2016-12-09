@@ -2,16 +2,14 @@
 // It renders all the other components.
 
 import React, { Component } from 'react';
-
-import Map from '../containers/google_map';
-import Information from '../containers/information'
+import Navigation from './nav';
 
 export default class App extends Component {
 	render() {
 		return (
 			<div>
-				<Map lat={47.656} lng={-122.3095} />
-				<Information />
+				{<Navigation />}
+				{this.props.children}
 			</div>
 		);
 	}
