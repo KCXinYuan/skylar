@@ -9,6 +9,8 @@ import MapPage from './components/map';
 export default (
 	<Route path="/" component={App}>
 		<IndexRoute component={HomePage} />
+		<Route path="signup" component={HomePage} />
+		<Route path="signin" component={HomePage} />
 		<Route path="map" component={RequireAuth(MapPage)} />
 	</Route>
 );

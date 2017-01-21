@@ -1,10 +1,12 @@
 // Navigation component
 
 import React, { Component } from 'react';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Modal, Button } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button } from 'react-bootstrap';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
+import SignUp from './signup';
+import SignIn from './signin';
 import * as actions from '../actions';
 
 class Navigation extends Component {
@@ -23,6 +25,7 @@ class Navigation extends Component {
 
 	closeModal() {
 		this.setState({ showModal: false });
+		this.context.router.push('/');
 	}
 
 	openModal() {
@@ -32,6 +35,11 @@ class Navigation extends Component {
 	handleButtonClick(signUp) {
 		this.setState({ signUp });
 		this.openModal();
+		if (signUp) {
+			this.context.router.push('/signup');
+		} else {
+			this.context.router.push('/signin');
+		}
 	}
 
 	createAccount() {
@@ -71,37 +79,11 @@ class Navigation extends Component {
 	renderLoginModal() {
 		if (this.state.signUp) {
 			return (
-				<div className="static-modal">
-					<Modal show={this.state.showModal} onHide={this.closeModal}>
-						<Modal.Header>
-							<Modal.Title>Sign Up</Modal.Title>
-						</Modal.Header>
-						<Modal.Body>
-							put sign up form here.
-						</Modal.Body>
-						<Modal.Footer>
-							<Button bsStyle="success" onClick={this.createAccount}>Sign Up</Button>
-							<Button bsStyle="danger" onClick={this.closeModal}>Cancel</Button>
-						</Modal.Footer>
-					</Modal>
-				</div>
+				<SignUp showModal={this.state.showModal} closeModal={this.closeModal} createAccount={this.createAccount} />
 			);
 		} else {
 			return (
-				<div className="static-modal">
-					<Modal show={this.state.showModal} onHide={this.closeModal}>
-						<Modal.Header>
-							<Modal.Title>Sign In</Modal.Title>
-						</Modal.Header>
-						<Modal.Body>
-							put sign in form here.
-						</Modal.Body>
-						<Modal.Footer>
-							<Button bsStyle="success" onClick={this.signInAccount}>Sign In</Button>
-							<Button bsStyle="danger" onClick={this.closeModal}>Cancel</Button>
-						</Modal.Footer>
-					</Modal>
-				</div>
+				<SignIn showModal={this.state.showModal} closeModal={this.closeModal} signInAccount={this.signInAccount} />
 			);
 		}
 	}
