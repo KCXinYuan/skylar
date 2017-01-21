@@ -9,6 +9,8 @@ import { Well } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
+import ChatRoom from './chatroom';
+
 class Establishment extends Component {
 	constructor(props) {
 		super(props);
@@ -18,75 +20,29 @@ class Establishment extends Component {
 		if (!this.props.establishmentInfo.geometry) {
 			return (
 				<ReactCSSTransitionGroup transitionName="fade">
-					<Well key={this.props.establishmentInfo.place_id + "establishment"}></Well>
+					<div></div>
 				</ReactCSSTransitionGroup>
 			);
 		}
 
 		return (
 			<ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={1000} transitionLeaveTimeout={1000}>
-				<Well key={this.props.establishmentInfo.place_id + "establishment"} style={{ padding: '0px 10px', textAlign: 'center', height: '90vh', width: '40vw', position: 'absolute', right: '0px' }}>
-					<div>
+				<Well key={this.props.establishmentInfo.place_id + "establishment"} className="establishment_column">
+					<div className="establishment_info">
 						<h3>{this.props.establishmentInfo.name}</h3>
 						<span>Insert Function data here</span>
 					</div>
 					<div>
 						Number: {this.props.establishmentInfo.formatted_phone_number}
 					</div>
-					<Well style={{ height: '20vh', textAlign: 'center', backgroundColor: 'black' }}>
+					<Well className="establishment_userlog">
 						USER LOG
 					</Well>
-					<Well style={{ height: '40vh', textAlign: 'center', backgroundColor: 'red', overflowY: 'auto' }}>
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
-						DYNAMIC FORMDYNAMIC FORMDYNAMIC FORMDYNAMIC FORM
+					<Well className="establishment_dynamic">
+						<input />
+						<ChatRoom />
 					</Well>
-					<Well style={{ height: '15vh', textAlign: 'center', backgroundColor: 'blue' }}>
+					<Well className="establishment_static">
 						STATIC FORM
 					</Well>
 				</Well>

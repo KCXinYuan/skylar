@@ -7,11 +7,13 @@ import { combineReducers } from 'redux';
 import AuthReducer from './reducer_auth';
 import EstablishmentReducer from './establishment_reducer';
 import AdvertReducer from './advert_reducer';
+import ChatReducer from './chat_reducer';
 
 const rootReducer = combineReducers({
 	authenticated: AuthReducer,
 	establishmentInfo: EstablishmentReducer,
-	advertInfo: AdvertReducer
+	advertInfo: AdvertReducer,
+	chat: ChatReducer
 });
 
 export default rootReducer;

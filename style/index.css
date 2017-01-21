@@ -1,9 +1,18 @@
+/* nav.js CSS */
+.navbar {
+	height: 10vh;
+	width: 100vw;
+	margin-bottom: 0;
+}
+
+/*google_map.js CSS */
 #map {
 	height: 90vh;
 	width: 100vw;
 	position: absolute;
 }
 
+/* Dont remember where this is used or if is used at all. */
 .map-marker-label {
 	position: absolute;
 	color: blue;
@@ -11,6 +20,7 @@
 	font-weight: bold;
 }
 
+/* React CSS Transition Group */
 .fade-enter {
 	top: -1000px;
 }
@@ -27,4 +37,55 @@
 .fade-leave-active {
 	top: -2000px;
 	transition: 1s ease-out all;
+}
+
+/* Advert Page and Establishment CSS
+	We currently have them separate incase they differ eventually.
+	Will merge when it is clear they are the same
+*/
+.advert_column, .establishment_column {
+	padding: 0px 10px;
+	margin: 0;
+	border: none;
+	text-align: center;
+	height: 90vh;
+	width: 40vw;
+	position: absolute;
+	right: 0px;
+}
+
+.advert_title {
+	height: 10vh;
+	text-align: center;
+	background-color: green;
+}
+
+.advert_dynamic {
+	height: 20vh;
+	text-align: center;
+	background-color: blue;
+}
+
+.advert_static {
+	height: 20vh;
+	text-align: center;
+	background-color: red;
+}
+
+.establishment_userlog {
+	text-align: center;
+	background-color: black;
+}
+
+.establishment_dynamic {
+	height: 40vh;
+	text-align: center;
+	background-color: red;
+	overflow-y: auto;
+}
+
+.establishment_static {
+	height: 15vh;
+	text-align: center;
+	background-color: blue;
 }

@@ -5,6 +5,8 @@ import { Well } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
+import ChatRoom from './chatroom';
+
 class Advert extends Component {
 	constructor(props) {
 		super(props);
@@ -14,23 +16,29 @@ class Advert extends Component {
 		if (!this.props.advertInfo.geometry) {
 			return (
 				<ReactCSSTransitionGroup transitionName="fade">
-					<Well key={this.props.advertInfo.place_id + "advert"}></Well>
+					<div></div>
 				</ReactCSSTransitionGroup>
 			);
 		}
 
 		return (
 			<ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={1000} transitionLeaveTimeout={1000}>
-				<Well key={this.props.advertInfo.place_id + "advert"} style={{ padding: '0px 10px', textAlign: 'center', height: '90vh', width: '40vw', position: 'absolute', right: '0px' }}>
-					<div>
-						<h3>{this.props.advertInfo.formatted_address}</h3>
+				<Well key={this.props.advertInfo.place_id + "advert"} className="advert_column">
+					<div className="advert_info">
+						<h3>{this.props.advertInfo.name}</h3>
 						<span>Insert Function data here</span>
 					</div>
 					<div>
-						Name: {this.props.advertInfo.name}
+						Number: {this.props.advertInfo.formatted_phone_number}
 					</div>
-					<Well style={{ height: '20vh', textAlign: 'center', backgroundColor: 'green' }}>
-						THIS IS ADVERT PAGE
+					<Well className="establishment_userlog">
+						USER LOG
+					</Well>
+					<Well className="advert_dynamic">
+						<ChatRoom />
+					</Well>
+					<Well className="advert_static">
+						STATIC FORM
 					</Well>
 				</Well>
 			</ReactCSSTransitionGroup>

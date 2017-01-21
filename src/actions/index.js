@@ -10,8 +10,12 @@ export const RESET_ESTABLISHMENT = 'RESET_ESTABLISHMENT';
 export const FETCH_ADVERT = 'FETCH_ADVERT';
 export const RESET_ADVERT = 'RESET_ADVERT';
 
+export const FETCH_CHAT = 'FETCH_CHAT';
+
 export const CHANGE_AUTH = 'CHANGE_AUTH';
 
+
+// eventually the fetch information will use http requests to get data.
 export function fetchInformation(request, type) {
 	return {
 		type: type,
@@ -24,6 +28,14 @@ export function resetInformation(type) {
 	return {
 		type: type,
 		payload: {}
+	}
+}
+
+export function fetchChat() {
+	// use a http get request to obtain data of all the messages sent.
+	return {
+		type: FETCH_CHAT,
+		payload: { Hello: "Test", Hello2: "Test2" }
 	}
 }
 

@@ -8,7 +8,7 @@ export default class App extends Component {
 	render() {
 		return (
 			<div>
-				{<Navigation />}
+				<Navigation />
 				{this.props.children}
 			</div>
 		);
