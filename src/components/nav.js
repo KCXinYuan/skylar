@@ -5,8 +5,6 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button } from 'react-boots
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
-import SignUp from './signup';
-import SignIn from './signin';
 import * as actions from '../actions';
 
 class Navigation extends Component {
@@ -17,24 +15,11 @@ class Navigation extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = { showModal: false, signUp: false };
-		this.closeModal = this.closeModal.bind(this);
-		this.createAccount = this.createAccount.bind(this);
-		this.signInAccount = this.signInAccount.bind(this);
-	}
-
-	closeModal() {
-		this.setState({ showModal: false });
-		this.context.router.push('/');
-	}
-
-	openModal() {
-		this.setState({ showModal: true });
+		this.state = { signUp: false };
 	}
 
 	handleButtonClick(signUp) {
 		this.setState({ signUp });
-		this.openModal();
 		if (signUp) {
 			this.context.router.push('/signup');
 		} else {
@@ -42,25 +27,11 @@ class Navigation extends Component {
 		}
 	}
 
-	createAccount() {
-		// when creating account, we want to check if all form elements are valid.
-		this.setState({ showModal: false });
-		this.props.authenticate(true);
-		this.context.router.push('/map');
-	}
-
-	signInAccount() {
-		// when signing in account, we want to chek if all form elements are valid and match a user in the database.
-		this.setState({ showModal: false });
-		this.props.authenticate(true);
-		this.context.router.push('/map');
-	}
-
 	handleLogoff() {
 		this.props.authenticate(false);
 		this.props.resetInformation(actions.RESET_ESTABLISHMENT);
 		this.props.resetInformation(actions.RESET_ADVERT);
-		this.context.router.push('/map');
+		//this.context.router.push('/map');
 	}
 
 	renderAuthButton() {
@@ -76,18 +47,6 @@ class Navigation extends Component {
 		}
 	}
 
-	renderLoginModal() {
-		if (this.state.signUp) {
-			return (
-				<SignUp showModal={this.state.showModal} closeModal={this.closeModal} createAccount={this.createAccount} />
-			);
-		} else {
-			return (
-				<SignIn showModal={this.state.showModal} closeModal={this.closeModal} signInAccount={this.signInAccount} />
-			);
-		}
-	}
-
 	render() {
 		return (
 			<Navbar className="navbar">
@@ -96,7 +55,6 @@ class Navigation extends Component {
 					{this.renderSignUpButton()}
 					{this.renderAuthButton()}
 				</div>
-				{this.renderLoginModal()}
 			</Navbar>
 		);
 	}
