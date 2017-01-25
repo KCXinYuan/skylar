@@ -1,0 +1,8 @@
+<html>
+    <head></head>
+    <body>
+        <form method="POST" target="/api/location">
+            <input type="text" name="googleMapsId" required>
+        </form>
+    </body>
+</html>

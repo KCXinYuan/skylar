@@ -59,7 +59,7 @@ router.post('/:resource', function(req, res){
         if (err){
             res.json({
                 confirmation: 'Fail',
-                message: 'Error: ' + err,
+                message: 'Error: ' + err
             });
         } else {
             res.json({
@@ -69,6 +69,45 @@ router.post('/:resource', function(req, res){
             });
         }
     });
+});
+
+router.put('/:resource', function(req, res){
+    var resource = req.params.resource;
+    controller[resource].update(req.body, function(err, data){
+        if (err){
+            res.json({
+                confirmation: 'Fail',
+                message: 'Error: ' + err
+            });
+        } else {
+            res.json({
+                confirmation: 'Success',
+                message: 'Updated data',
+                data: data
+            });
+        }
+    })
+});
+
+router.delete('/:resource', function(req, res){
+    var resource = req.params.resource;
+    if (!req.query.id) {
+        res.send('ID needed to delete resource');
+    } else {
+        controller[resource].delete(req.body, function(err){
+            if (err){
+                res.json({
+                    confirmation: 'Fail',
+                    message: 'Error' + err
+                });
+            } else {
+                res.json({
+                    confirmation: 'Success',
+                    message: 'Deleted data'
+                });
+            }
+        });
+    }
 });
 
 

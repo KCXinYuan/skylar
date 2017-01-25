@@ -27,11 +27,33 @@ module.exports = {
     },
 
     create: function(params, callback){
+        params.events = params.events.trim().split(',');
+        
         Location.create(params, function(err, data){
             if (err){
                 callback(err, null);
             } else {
                 callback(null, data);
+            }
+        });
+    },
+
+    update: function(params, callback){
+        Location.update(params, function(err, data){
+            if (err){
+                callback(err, null);
+            } else {
+                callback(null, data);
+            }
+        });
+    },
+
+    delete: function(params, callback){
+        Location.delete(params, function(err){
+            if (err){
+                callback(err, null);
+            } else {
+                callback(null, null);
             }
         });
     }

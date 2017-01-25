@@ -1,0 +1,11 @@
+<html>
+    <head></head>
+    <body>
+        <form method="POST" target="/api/user">
+            <input type="text" name="firstName" required>
+            <input type="text" name="lastName" required>
+            <input type="email" name="email" required>
+            <input type="password" name="password">
+        </form>
+    </body>
+</html>
