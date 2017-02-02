@@ -89,3 +89,8 @@
 	text-align: center;
 	background-color: blue;
 }
+
+/* Sign In and Sign Out Page CSS */
+.danger > input {
+	border-color: red;
+}
