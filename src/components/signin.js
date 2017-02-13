@@ -43,7 +43,8 @@ class SignIn extends Component {
 		const { handleSubmit } = this.props;
 
 		return (
-			<div>
+			<div className="signForm">
+				<h1 style={{ textAlign: 'center' }}>Sign In to your Skylar Account!</h1>
 				<form onSubmit={handleSubmit(this.signInAccount.bind(this))}>
 					<Field label="Username" name="username" component={renderInput} type="text" />
 					<Field label="Email" name="email" component={renderInput} type="text" />

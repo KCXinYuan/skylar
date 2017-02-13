@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Map from '../containers/google_map';
 import Establishment from '../containers/establishment';
 import Advert from '../containers/advert';
 
-export default class MapPage extends Component {
+import * as actions from '../actions';
+
+class MapPage extends Component {
+	componentWillUnmount() {
+		this.props.resetInformation(actions.RESET_ESTABLISHMENT);
+		this.props.resetInformation(actions.RESET_ADVERT);
+	}
+
 	render() {
 		return (
 			<div>
@@ -14,3 +22,5 @@ export default class MapPage extends Component {
 		);
 	}
 }
+
+export default connect(null, actions)(MapPage);

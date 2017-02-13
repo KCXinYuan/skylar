@@ -14,48 +14,40 @@ class Navigation extends Component {
 
 	constructor(props) {
 		super(props);
-
-		this.state = { signUp: false };
 	}
 
 	handleButtonClick(signUp) {
-		this.setState({ signUp });
-		if (signUp) {
-			this.context.router.push('/signup');
-		} else {
-			this.context.router.push('/signin');
-		}
+		signUp ? this.context.router.push('/signup') : this.context.router.push('/signin')
 	}
 
 	handleLogoff() {
 		this.props.authenticate(false);
 		this.props.resetInformation(actions.RESET_ESTABLISHMENT);
 		this.props.resetInformation(actions.RESET_ADVERT);
-		//this.context.router.push('/map');
-	}
-
-	renderAuthButton() {
-		if (this.props.authenticated) {
-			return <Button bsStyle="primary" onClick={() => this.handleLogoff()}>Sign Out</Button>
-		}
-		return <Button bsStyle="primary" onClick={() => this.handleButtonClick(false)}>Sign in</Button>
-	}
-
-	renderSignUpButton() {
-		if (!this.props.authenticated) {
-			return <Button bsStyle="primary" onClick={() => this.handleButtonClick(true)}>Sign Up</Button>
-		}
 	}
 
 	render() {
 		return (
-			<Navbar className="navbar">
-				<Link to="/">Skylar Logo Here</Link>
-				<div style={{ float: 'right' }}>
-					{this.renderSignUpButton()}
-					{this.renderAuthButton()}
-				</div>
-			</Navbar>
+			<div>
+				<Navbar collapseOnSelect>
+					<Navbar.Header>
+						<Navbar.Brand>
+							<Link to="/">Skylar Logo Here</Link>
+						</Navbar.Brand>
+					</Navbar.Header>
+					<Nav>
+						<NavItem>
+							{this.props.authenticated ? <Link className="navLink" to="/map">Map</Link> : null}
+						</NavItem>
+					</Nav>
+					<Nav pullRight>
+						<NavItem>
+							{this.props.authenticated ? <Link className="navLink" onClick={() => this.handleLogoff()}>Sign Out</Link> : <Link className="navLink" onClick={() => this.handleButtonClick(false)}>Sign In</Link>}
+							{!this.props.authenticated ? <Link className="navLink" onClick={() => this.handleButtonClick(true)}>Sign Up</Link> : null}
+						</NavItem>
+					</Nav>
+				</Navbar>
+			</div>
 		);
 	}
 }
