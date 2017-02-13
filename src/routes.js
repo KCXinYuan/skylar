@@ -4,9 +4,9 @@ import { Route, IndexRoute } from 'react-router';
 import App from './components/app';
 import RequireAuth from './components/require_authentication';
 import HomePage from './components/home';
-import MapPage from './components/map';
-import SignUp from './components/signup';
-import SignIn from './components/signin';
+import MapPage from './containers/map';
+import SignUp from './containers/signup';
+import SignIn from './containers/signin';
 
 export default (
 	<Route path="/" component={App}>

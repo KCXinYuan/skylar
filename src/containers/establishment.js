@@ -28,22 +28,27 @@ class Establishment extends Component {
 		return (
 			<ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={1000} transitionLeaveTimeout={1000}>
 				<Well key={this.props.establishmentInfo.place_id + "establishment"} className="establishment_column">
-					<div className="establishment_info">
-						<h3>{this.props.establishmentInfo.name}</h3>
-						<span>Insert Function data here</span>
+					<div className="establishment_header">
+						<h3>Establishment</h3>
 					</div>
-					<div>
+					<hr />
+					<div className="establishment_info">
+						<h3>{this.props.establishmentInfo.name}, Library</h3>
 						Number: {this.props.establishmentInfo.formatted_phone_number}
 					</div>
+					<hr />
 					<Well className="establishment_userlog">
-						USER LOG
+						<span>33 Users</span>
+						<span>Click Here for list of Users</span>
 					</Well>
+					<hr />
 					<Well className="establishment_dynamic">
 						<input />
 						<ChatRoom />
 					</Well>
+					<hr />
 					<Well className="establishment_static">
-						STATIC FORM
+						Information about the establishment goes here.
 					</Well>
 				</Well>
 			</ReactCSSTransitionGroup>

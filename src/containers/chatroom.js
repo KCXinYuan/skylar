@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as actions from '../actions';
-import ChatLog from './chat_log';
+import ChatLog from '../components/chat_log';
 
 class ChatRoom extends Component {
 	constructor(props) {

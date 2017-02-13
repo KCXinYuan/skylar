@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Map from '../containers/google_map';
-import Establishment from '../containers/establishment';
-import Advert from '../containers/advert';
+import Map from './google_map';
+import Establishment from './establishment';
+import Advert from './advert';
 
 import * as actions from '../actions';
 

@@ -2,7 +2,7 @@
 // It renders all the other components.
 
 import React, { Component } from 'react';
-import Navigation from './nav';
+import Navigation from '../containers/nav';
 
 export default class App extends Component {
 	render() {

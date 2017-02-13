@@ -24,21 +24,21 @@ class Advert extends Component {
 		return (
 			<ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={1000} transitionLeaveTimeout={1000}>
 				<Well key={this.props.advertInfo.place_id + "advert"} className="advert_column">
-					<div className="advert_info">
-						<h3>{this.props.advertInfo.name}</h3>
-						<span>Insert Function data here</span>
+					<div className="advert_title">
+						<h3>Advert</h3>
 					</div>
-					<div>
+					<hr />
+					<div className="advert_info">
+						<h3>{this.props.advertInfo.name}, Library, 33</h3>
 						Number: {this.props.advertInfo.formatted_phone_number}
 					</div>
-					<Well className="establishment_userlog">
-						USER LOG
-					</Well>
+					<hr />
 					<Well className="advert_dynamic">
 						<ChatRoom />
 					</Well>
+					<hr />
 					<Well className="advert_static">
-						STATIC FORM
+						Information about the advert goes here.
 					</Well>
 				</Well>
 			</ReactCSSTransitionGroup>
